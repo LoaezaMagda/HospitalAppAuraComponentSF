@@ -1,0 +1,62 @@
+<aura:component controller="AppointmentAuraController" implements="lightning:actionOverride,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="reloadForm" type="boolean" default="true" />
+	<aura:attribute name="profile" type="Profile" />
+    <aura:attribute name="user" type="Object" />
+    <aura:attribute name="idapp" type="String" />
+	<aura:attribute name="isDisabled" type="Boolean" default="false" />
+    <aura:attribute name="statusDisabled" type="Boolean" default="false" />
+    <aura:attribute name="doctorDisabled" type="Boolean" default="true" />
+    <aura:attribute name="patientDisabled" type="Boolean" default="true" />
+    <aura:attribute name="errorMessage" type="String" />
+    <aura:attribute name="showErrors" type="boolean" default='false' />
+	
+    
+    
+       <aura:renderIf isTrue="{!v.showErrors == true}">
+            <div class="slds-notify slds-notify_toast slds-theme_error">
+                <span class="slds-assistive-text">error</span>
+                <div class="slds-notify__content">
+                    <h5 class="slds-text-heading_small slds-align_absolute-center">Error Message </h5>
+                    <br/>
+                    <p class="slds-align_absolute-center">{!v.errorMessage}</p>                
+                </div>
+        	</div>
+        </aura:renderIf>
+
+        <div class="slds-wrap" style="width:900px;">
+         <lightning:card title="Appointmet">
+               <lightning:recordEditForm recordId='{!v.recordId}' objectApiName="Appointment__c"
+                                  aura:id="appForm"
+                                  onload="{!c.handleOnLoad}"
+                                  onsubmit="{!c.handleOnSubmit}"
+                                  onsuccess="{!c.handleOnSuccess}"
+                                  onerror="{!c.handleOnError}"
+                                  >
+
+                <lightning:inputField type="text"  fieldName="Name" aura:id="name" />
+                <lightning:inputField type="date" fieldName="Date__c" aura:id="date" onchange="{!c.validateDate}"/>
+                       <aura:if isTrue="{!v.profile.Name == 'Doctors'}">
+                        <lightning:inputField fieldName="Doctor__c"  value="{!v.user.Id}" disabled="{!v.doctorDisabled}"/>
+						<lightning:inputField fieldName="Patient__c" disabled="{!v.patientDisabled}"/>
+                    	</aura:if>
+                    <aura:renderIf isTrue="{!v.profile.Name == 'Patients'}">
+                        <lightning:inputField fieldName="Patient__c" value="{!v.user.Id}" disabled="{!v.patientDisabled}"/>
+                        <lightning:inputField fieldName="Doctor__c" disabled="{!v.doctorDisabled}"/>
+                   </aura:renderIf>
+                    <aura:if isTrue="{!v.profile.Name == 'System Administrator'}">
+                        <lightning:inputField fieldName="Doctor__c" aura:id="docId" />
+                        <lightning:inputField fieldName="Patient__c" aura:id="patId"/>
+                        
+                    </aura:if>
+                <lightning:inputField fieldName="Status__c" name='sts' aura:id="status"/>
+                   
+                <lightning:inputField fieldName="Time__c" aura:id="time" onchange="{!c.validateTime}"/>
+            <lightning:button variant="brand" type="submit" name="save" label="Save" disabled="{!v.isDisabled}"/>
+        </lightning:recordEditForm>
+      </lightning:card>
+     </div>
+
+    <br/><br/><br/><br/>
+    
+</aura:component>
