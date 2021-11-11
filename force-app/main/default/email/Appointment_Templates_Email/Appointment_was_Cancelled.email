@@ -1,0 +1,17 @@
+<h3>Notification Appointment cancelled</h3><br/>
+
+<p> Appointment</p>
+
+<p>Name: {!Appointment__c.Name}</p>
+
+<p>Status: {!Appointment__c.Status__c}</p>
+
+<p>Date: {!Appointment__c.Date__c}</p>
+
+<p>Time: {!Appointment__c.Time__c}</p>
+
+<p>Doctor:  {!Appointment__c.Doctor__c}</p>
+
+<p>Patient:  {!Appointment__c.Patient__c}</p>
+
+<a href="https://bgo-dev-ed--c.visualforce.com/apex/createAppoitment?id={!Appointment__c.Id}">Link</a>

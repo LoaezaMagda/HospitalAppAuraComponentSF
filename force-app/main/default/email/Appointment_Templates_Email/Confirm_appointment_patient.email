@@ -1,0 +1,11 @@
+<h3>Appointment needs to be Confirmed</h3><br/>
+
+<p> Appointment</p>
+<p>Name: {!Appointment__c.Name}</p>
+<p>Date: {!Appointment__c.Date__c}</p>
+<p>Status: {!Appointment__c.Status__c}</p>
+<p>Time: {!Appointment__c.Time__c}</p>
+<p>Doctor:  {!Appointment__c.Doctor__c.Name}</p>
+<p>Patient:  {!Appointment__c.Patient__c.Name}</p>
+
+<p>Link: {!Appointment__c.Link}</p>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Send patient appointment to confirm one day before date come</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Confirm appointment patient</name>
+    <style>none</style>
+    <subject>Appoitment needs to be Confirmed</subject>
+    <textOnly>Notification Appointment needs to be Confirmed
+
+Appointment
+
+
+Date: {!Appointment__c.Date__c}
+
+Patient: {!Appointment__c.00N4x00000QVqO8}
+
+Doctor: {!Appointment__c.00N4x00000QVqNt}
+
+Status: {!Appointment__c.Status__c}
+
+Date: {!Appointment__c.Date__c}
+
+Time: !Appointment__c.Time__c}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

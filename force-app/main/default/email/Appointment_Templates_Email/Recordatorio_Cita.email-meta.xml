@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Appointment Reminder</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Recordatorio Cita</name>
+    <style>none</style>
+    <subject>Appointment Reminder</subject>
+    <textOnly>Reminder you have an Aappointment tomorrow
+
+
+Appointment detail
+
+Date: &quot;{!Appointment__c.Date__c}&quot;
+
+Time: &quot;{!Appointment__c.Time__c}&quot;
+
+Status:  &quot;{!Appointment__c.Status__c}&quot;</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>
