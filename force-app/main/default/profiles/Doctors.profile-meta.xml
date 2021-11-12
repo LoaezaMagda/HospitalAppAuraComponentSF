@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
+    <applicationVisibilities>
+        <application>Hospital</application>
+        <default>false</default>
+        <visible>true</visible>
+    </applicationVisibilities>
     <classAccesses>
         <apexClass>AppointmentAuraController</apexClass>
         <enabled>false</enabled>
@@ -151,8 +156,16 @@
         <visible>false</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
+        <tab>Appointment__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
         <tab>Doctor__c</tab>
         <visibility>DefaultOff</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Hospital__c</tab>
+        <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>Patients__c</tab>
