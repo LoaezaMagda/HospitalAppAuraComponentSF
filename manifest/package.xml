@@ -41,6 +41,7 @@
 	<types>
 		<members>Appointment_Record_Page</members>
 		<members>Doctor_Record_Page</members>
+		<members>Hospital_UtilityBar</members>
 		<name>FlexiPage</name>
 	</types>
 	<types>
