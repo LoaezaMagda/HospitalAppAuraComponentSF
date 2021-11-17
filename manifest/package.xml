@@ -16,6 +16,10 @@
 		<name>AuraDefinitionBundle</name>
 	</types>
 	<types>
+		<members>hospitalflatbuildingiconvector14923</members>
+		<name>ContentAsset</name>
+	</types>
+	<types>
 		<members>Hospital</members>
 		<name>CustomApplication</name>
 	</types>
@@ -33,8 +37,8 @@
 	</types>
 	<types>
 		<members>Appointment_Templates_Email/Appointment_was_Cancelled</members>
-		<members>Appointment_Templates_Email/Confirm_appointment_patient</members>
 		<members>Appointment_Templates_Email/Appoitment_was_Confirmed</members>
+		<members>Appointment_Templates_Email/Confirm_appointment_patient</members>
 		<members>Appointment_Templates_Email/Recordatorio_Cita</members>
 		<name>EmailTemplate</name>
 	</types>
@@ -51,6 +55,15 @@
 		<name>Profile</name>
 	</types>
 	<types>
+		<members>Medical_Staff</members>
+		<name>Role</name>
+	</types>
+	<types>
+		<members>Doctor__c</members>
+		<members>Patients__c</members>
+		<name>SharingRules</name>
+	</types>
+	<types>
 		<members>Appointment__c.Validate_Name</members>
 		<members>Appointment__c.Validation_Date</members>
 		<name>ValidationRule</name>
@@ -62,10 +75,6 @@
 	<types>
 		<members>Appointment__c.Send_email_when_appointment_was_cancelled</members>
 		<name>WorkflowAlert</name>
-	</types>
-	<types>
-		<members>hospitalflatbuildingiconvector14923</members>
-		<name>ContentAsset</name>
 	</types>
 	<version>51.0</version>
 </Package>
