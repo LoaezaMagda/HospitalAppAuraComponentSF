@@ -71,7 +71,7 @@
             <type>email</type>
         </recipients>
         <senderType>CurrentUser</senderType>
-        <template>unfiled$public/Appoitment_was_Confirmed</template>
+        <template>Appointment_Templates_Email/Appoitment_was_Confirmed</template>
     </alerts>
     <alerts>
         <fullName>Send_emailt_appoitment_cancelled</fullName>

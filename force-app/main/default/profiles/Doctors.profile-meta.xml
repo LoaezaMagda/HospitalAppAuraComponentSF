@@ -25,11 +25,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Appointment__c.Doctor__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Appointment__c.Patient_Email__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -162,10 +157,6 @@
     <tabVisibilities>
         <tab>Doctor__c</tab>
         <visibility>DefaultOff</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
-        <tab>Hospital__c</tab>
-        <visibility>Hidden</visibility>
     </tabVisibilities>
     <tabVisibilities>
         <tab>Patients__c</tab>

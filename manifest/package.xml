@@ -28,18 +28,19 @@
 	<types>
 		<members>Appointment__c</members>
 		<members>Doctor__c</members>
-		<members>Hospital__c</members>
 		<members>Patients__c</members>
 		<name>CustomTab</name>
 	</types>
 	<types>
 		<members>Appointment_Templates_Email/Appointment_was_Cancelled</members>
 		<members>Appointment_Templates_Email/Confirm_appointment_patient</members>
+		<members>Appointment_Templates_Email/Appoitment_was_Confirmed</members>
 		<members>Appointment_Templates_Email/Recordatorio_Cita</members>
 		<name>EmailTemplate</name>
 	</types>
 	<types>
 		<members>Appointment_Record_Page</members>
+		<members>Appointment_Record_Page1</members>
 		<members>Doctor_Record_Page</members>
 		<members>Hospital_UtilityBar</members>
 		<name>FlexiPage</name>
@@ -61,6 +62,10 @@
 	<types>
 		<members>Appointment__c.Send_email_when_appointment_was_cancelled</members>
 		<name>WorkflowAlert</name>
+	</types>
+	<types>
+		<members>hospitalflatbuildingiconvector14923</members>
+		<name>ContentAsset</name>
 	</types>
 	<version>51.0</version>
 </Package>
