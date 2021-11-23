@@ -13,7 +13,6 @@
             component.set("v.profile", result);
             profileName = result.Name;
 				var  x = component.find("sts");
-        console.log('STATUS STATUS' + x);
               if(recordId == undefined && profileName == 'Patients') {
                   component.set('v.doctorDisabled',false);    
               }else if(recordId != undefined && profileName == 'Patients'){
@@ -22,15 +21,12 @@
                   component.set('v.patientDisabled',false);
               }else if(recordId != undefined && profileName == 'Doctors'){
                   component.set('v.patientDisabled',true);
-              }
-              
-              
-              
+              }              
            }else{
              console.error("fail:" + response.getError()[0].message); 
             }
         });
-          $A.enqueueAction(action);
+        $A.enqueueAction(action);
 
     },
     handleOnLoad : function(component, event, helper) {
@@ -78,19 +74,26 @@
     validateDate : function(c, e, h) {
        var  dateField = c.find("date").get("v.value");  
        var dayFromDate = $A.localizationService.formatDate(dateField, "EEEE");
-       if(dayFromDate == 'Sunday' || dayFromDate == 'Saturday' ) {
+       var today = $A.localizationService.formatDate(new Date(), "YYYY-MM-DD");
+       var dateSelected = $A.localizationService.formatDate(dateField, "YYYY-MM-DD");
+       if(dayFromDate == 'Sunday' || dayFromDate == 'Saturday') {
           c.set("v.showErrors",true);
           c.set("v.errorMessage",'Date ' + dateField + ' invalid, Days only can be from Monday to Friday');         
-       	   c.set('v.isDisabled',true);
-       }else {
-            c.set("v.showErrors",false);
-            c.set('v.isDisabled',false);
+       	  c.set('v.isDisabled',true);
+       }
+       else if(dateSelected < today ){
+          c.set("v.showErrors",true);
+          c.set("v.errorMessage",'Date ' + dateField + ' invalid, Date cannot be less than today');         
+       	  c.set('v.isDisabled',true);
+       }
+       else {
+          c.set("v.showErrors",false);
+          c.set('v.isDisabled',false);
        }
 	},
     
     validateTime : function(c, e, h) {
         var timeField = c.find("time").get("v.value");  
-        console.log('TIME' + timeField);
         if(timeField >= '08:00:00' && timeField <= '20:00:00.000') {
             c.set("v.showErrors",false);
             c.set('v.isDisabled',false);
@@ -99,5 +102,12 @@
           c.set("v.errorMessage",'Time ' + timeField + ' invalid, Available time from 8:00 to 20:00 hours'); 
        	  c.set('v.isDisabled',true);
         }
-	}
+	},
+    cancelClick : function(c, e, h) {
+        var urlEvent = $A.get("e.force:navigateToURL");
+           urlEvent.setParams({
+              url: "/lightning/o/Appointment__c/list?filterName=Recent"
+           });
+        urlEvent.fire();
+    }
 })

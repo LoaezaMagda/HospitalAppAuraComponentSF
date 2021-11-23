@@ -1,0 +1,10 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="recordId" type="String" access="global"/>
+    <aura:attribute name="fields" type="String[]" default="['Name','User__c','Age__c','Gender__c','CreatedById','LastModifiedById']" />
+    <div class="slds-m-around_xx-large">
+          <lightning:card>
+    		<lightning:recordForm aura:id="myRecordForm" recordId="{!v.recordId}" objectApiName="Patients__c" fields="{!v.fields}" columns="1" mode="readonly"/>
+        </lightning:card>
+    </div>
+</aura:component>

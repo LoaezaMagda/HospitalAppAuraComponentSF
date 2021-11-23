@@ -7,7 +7,11 @@
     </applicationVisibilities>
     <classAccesses>
         <apexClass>AppointmentAuraController</apexClass>
-        <enabled>false</enabled>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AppointmentTriggerHandler</apexClass>
+        <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>callSendEmailAppoitmentBatch</apexClass>
@@ -39,13 +43,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Doctor__c.Check_In_Time__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Doctor__c.Check_Out_Time__c</field>
+        <editable>true</editable>
+        <field>Doctor__c.Email__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -56,16 +55,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Doctor__c.Phone__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Doctor__c.Shift__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Doctor__c.Speciality__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -137,16 +126,6 @@
     </objectPermissions>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>Doctor__c.Doctor_Specialist</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
-        <recordType>Doctor__c.General_Doctor</recordType>
-        <visible>false</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>false</default>
         <recordType>Doctor__c.Marketing_Layout</recordType>
         <visible>false</visible>
     </recordTypeVisibilities>
@@ -160,7 +139,7 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Patients__c</tab>
-        <visibility>Hidden</visibility>
+        <visibility>DefaultOff</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>
     <userPermissions>

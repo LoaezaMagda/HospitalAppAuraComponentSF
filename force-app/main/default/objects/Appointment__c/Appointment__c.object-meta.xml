@@ -133,10 +133,10 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Appointment_Record_Page1</content>
+        <content>createAppointment</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>LightningComponent</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>

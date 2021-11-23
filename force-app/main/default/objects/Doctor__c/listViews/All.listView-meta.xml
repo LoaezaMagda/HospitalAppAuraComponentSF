@@ -4,9 +4,6 @@
     <columns>NAME</columns>
     <columns>Title__c</columns>
     <columns>Phone__c</columns>
-    <columns>Speciality__c</columns>
-    <columns>Shift__c</columns>
-    <columns>Check_Out_Time__c</columns>
     <columns>Email__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>

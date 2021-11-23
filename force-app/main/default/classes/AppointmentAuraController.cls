@@ -7,13 +7,13 @@ public with sharing class AppointmentAuraController {
         currentProfile = getProfileName().Name;
         if(currentProfile == 'Doctors'){
             Doctor__c currentDoc = new Doctor__c();
-            currentDoc = [SELECT Id,Name FROM Doctor__c WHERE User__c =: UserInfo.getUserId() Limit 1];
+            currentDoc = [SELECT Id,Name, User__r.Email FROM Doctor__c WHERE User__c =: UserInfo.getUserId() Limit 1];
             return currentDoc;
         }else if(currentProfile == 'Patients'){
             Patients__c currentPat = new Patients__c();
-            currentPat = [SELECT Id,Name FROM Patients__c WHERE User__c =: UserInfo.getUserId() Limit 1];
+            currentPat = [SELECT Id,Name,User__r.Email FROM Patients__c WHERE User__c =: UserInfo.getUserId() Limit 1];
             return currentPat;
-        }else if(currentProfile == 'System Administrator'){
+        }else if(currentProfile == 'Admin Test' || currentProfile == 'System Administrator'){
             User currentUser = new User();
             currentUser = [SELECT Name FROM User WHERE Id =: UserInfo.getUserId() Limit 1];
             return currentUser;
@@ -21,6 +21,8 @@ public with sharing class AppointmentAuraController {
             return null;
         }
     }
+    
+    
     
     /*@AuraEnabled
     public static ProfileInfo getProfileInfo(){

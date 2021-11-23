@@ -4,32 +4,6 @@
     <active>true</active>
     <label>Marketing Layout</label>
     <picklistValues>
-        <picklist>Shift__c</picklist>
-        <values>
-            <fullName>Afternoon shift</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Morning shift</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Ningth shift</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Speciality__c</picklist>
-        <values>
-            <fullName>General Doctor</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Psycological</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
         <picklist>Title__c</picklist>
         <values>
             <fullName>DR%2E</fullName>
