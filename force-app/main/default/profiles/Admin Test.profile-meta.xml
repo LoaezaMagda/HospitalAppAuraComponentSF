@@ -3,7 +3,7 @@
     <applicationVisibilities>
         <application>Hospital</application>
         <default>false</default>
-        <visible>true</visible>
+        <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
         <apexClass>AppointmentAuraController</apexClass>
