@@ -4,7 +4,7 @@
 		var profileName;
         
         helper.getObjectInfo(component);
-        var action = component.get("c.getProfileName");
+        var action = component.get("c.getProfile");
         
         action.setCallback(this, function(response) {
           var state = response.getState();

@@ -1,8 +1,10 @@
 trigger AppointmentApexSharing on Appointment__c (after insert, after update) {
     
-    if(AppointmentTriggerHandler.isFirstTime) {
-        System.debug('DENTRO DEL TRIGGER');
-        AppointmentTriggerHandler.isFirstTime = false;
+    if(!AppointmentTriggerHandler.isFirstTime) {
+        return ;
+    }
+    AppointmentTriggerHandler.isFirstTime = false;
+    
         if(trigger.isUpdate && trigger.isAfter) {
            for(Appointment__c item : trigger.new) {
                  Appointment__c oldApp = Trigger.oldMap.get(item.id);
@@ -18,8 +20,9 @@ trigger AppointmentApexSharing on Appointment__c (after insert, after update) {
     
         if(trigger.isInsert) {
             Profile profileName = [SELECT Name FROM Profile WHERE Id =: UserInfo.getProfileId() Limit 1];
-            List<Appointment__c> appList = new List<Appointment__c>();
-            appList = [SELECT Id,Patient__r.User__c, Doctor__r.User__c FROM Appointment__c WHERE Id IN: Trigger.new];
+            Boolean hasPermission = FeatureManagement.checkPermission('is_Hospital_Admin');
+            //List<Appointment__c> appList = new List<Appointment__c>();
+            //appList = [SELECT Id,Patient__r.User__c, Doctor__r.User__c FROM Appointment__c WHERE Id IN: Trigger.new];
             Map<Id,Appointment__c> appMap = new Map<Id,Appointment__c>([SELECT Id,Patient__r.User__c, Doctor__r.User__c, Doctor__r.User__r.Email,Patient__r.User__r.Email FROM Appointment__c WHERE Id IN: Trigger.new]);
             List<Appointment__Share> appSrh = new List<Appointment__Share>();
             List<Appointment__c> app = new List<Appointment__c>();
@@ -31,9 +34,9 @@ trigger AppointmentApexSharing on Appointment__c (after insert, after update) {
                     appToUpdate.Patient_Email__c = appMap.get(item.Id).Patient__r.User__r.Email;
                     appToUpdate.Id = item.Id;
                     app.add(appToUpdate);
+                    
                     doctorShr = new Appointment__Share();
                     patientShr = new Appointment__Share();
-                    //aqui debo compartir si el doctor esta logueado mapear el del paciente
                     //doctorShr.UserOrGroupId = appMap.get(item.Id).Patient__r.User__c;
                     //doctorShr.UserOrGroupId = appMap.get(item.Id).Doctor__r.User__c;
                     if(profileName.Name == 'Patients') {
@@ -49,7 +52,8 @@ trigger AppointmentApexSharing on Appointment__c (after insert, after update) {
                         patientShr.AccessLevel = 'edit';
                         appSrh.add(patientShr);
                         //recordShr.UserOrGroupId = trigger.newMap.get(item.Id).Patient__r.User__c;
-                    }else if(profileName.Name == 'System Administrator' || profileName.Name == 'Admin Test' ){
+                    }else if(hasPermission){
+                        System.debug('HAS PERMISSION' + hasPermission);
                          doctorShr.ParentId = item.Id;
                          patientShr.ParentId = item.Id;
                          doctorShr.UserOrGroupId = appMap.get(item.Id).Doctor__r.User__c;
@@ -62,8 +66,7 @@ trigger AppointmentApexSharing on Appointment__c (after insert, after update) {
                 }
             
             insert appSrh;
-            upsert app;
+            update app;
         
         }
-    }
 }

@@ -9,6 +9,7 @@
                 if (component.isValid() && state === "SUCCESS") {
                     var result = actionResult.getReturnValue();
                     component.set("v.user", result);
+                    console.log('RESULT' + result)
                 }
             });
             $A.enqueueAction(action);

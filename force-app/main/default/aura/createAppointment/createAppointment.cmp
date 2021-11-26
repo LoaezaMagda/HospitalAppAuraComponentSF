@@ -11,7 +11,7 @@
     <aura:attribute name="errorMessage" type="String" />
     <aura:attribute name="showErrors" type="boolean" default='false' />
     <div class="slds-grid slds-gutters">
-      <div class="slds-wrap slds-align_absolute-center" style="width:500px;">
+      <div class="slds-wrap slds-align_absolute-center" style="width:100px;">
          <aura:renderIf isTrue="{!v.showErrors == true}">
                 <div class="slds-notify slds-notify_toast slds-theme_error">
                     <span class="slds-assistive-text">error</span>
@@ -24,8 +24,8 @@
             </aura:renderIf> 
         </div>
     </div>
-    
-		<div class="slds-grid slds-gutters slds-align_absolute-center" style="height:80vh;margin-top:10vh">
+    	<aura:if isTrue="{!v.user.Name != null || v.profile.Name == 'Doctors' || v.profile.Name == 'Patients' }">
+		<div class="slds-grid slds-gutters slds-align_absolute-center" style="height:80vh;margin-top:5vh">
             <div class="slds-wrap" style="width:900px;">
              <lightning:card title="Appointmet">
                    <lightning:recordEditForm recordId='{!v.recordId}' objectApiName="Appointment__c"
@@ -46,7 +46,7 @@
                             <lightning:inputField fieldName="Patient__c" value="{!v.user.Id}" disabled="{!v.patientDisabled}"/>
                             <lightning:inputField fieldName="Doctor__c" disabled="{!v.doctorDisabled}"/>
                        </aura:if>
-                       <aura:if isTrue="{!v.profile.Name == 'Admin Test' || v.profile.Name == 'System Administrator'}">
+                       <aura:if isTrue="{!v.user.Name != null || v.user.Name != undefined}">
                             <lightning:inputField fieldName="Doctor__c" aura:id="docId" />
                             <lightning:inputField fieldName="Patient__c" aura:id="patId"/>
                        </aura:if>
@@ -64,5 +64,7 @@
           </lightning:card>
          </div>
     </div>
+    </aura:if>
+    
    <br/><br/><br/><br/>
 </aura:component>

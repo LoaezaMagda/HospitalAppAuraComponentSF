@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
-    <sharingOwnerRules>
-        <fullName>Share_Patient</fullName>
+    <sharingCriteriaRules>
+        <fullName>Share_with_Medical_Staff</fullName>
         <accessLevel>Read</accessLevel>
-        <label>Share Patient</label>
+        <label>Share with Medical Staff</label>
         <sharedTo>
             <role>Medical_Staff</role>
         </sharedTo>
-        <sharedFrom>
-            <role>CEO</role>
-        </sharedFrom>
-    </sharingOwnerRules>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
 </SharingRules>

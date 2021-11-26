@@ -35,6 +35,10 @@
 		<name>CustomObject</name>
 	</types>
 	<types>
+		<members>is_Hospital_Admin</members>
+		<name>CustomPermission</name>
+	</types>
+	<types>
 		<members>Appointment__c</members>
 		<members>Doctor__c</members>
 		<members>Patients__c</members>
@@ -53,6 +57,10 @@
 		<members>Hospital_UtilityBar</members>
 		<members>Patient_Record_Page</members>
 		<name>FlexiPage</name>
+	</types>
+	<types>
+		<members>Hospital_Admin</members>
+		<name>PermissionSet</name>
 	</types>
 	<types>
 		<members>Admin Test</members>
