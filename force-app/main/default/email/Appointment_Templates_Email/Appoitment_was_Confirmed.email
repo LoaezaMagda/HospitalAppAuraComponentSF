@@ -5,12 +5,11 @@
 
 <p>Date: {!Appointment__c.Date__c}</p>
 
-<p>Patient: {!Appointment__c.00N4x00000QVqO8}</p>
-
-<p>Doctor: {!Appointment__c.00N4x00000QVqNt}</p>
-
 <p>Status: {!Appointment__c.Status__c}</p>
 
 <p>Date: {!Appointment__c.Date__c}</p>
 
 <p>Time: {!Appointment__c.Time__c}</p>
+
+
+<a href="{!Appointment__c.Link}">See the record click here</a>

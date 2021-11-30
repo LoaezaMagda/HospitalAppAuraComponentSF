@@ -45,7 +45,7 @@
         <fullName>Send_email_when_appointment_was_cancelled</fullName>
         <ccEmails>loaeza.magdalena@gmail.com</ccEmails>
         <description>Send email when appointment was cancelled</description>
-        <protected>false</protected>
+        <protected>true</protected>
         <recipients>
             <field>Doctor_Email__c</field>
             <type>email</type>

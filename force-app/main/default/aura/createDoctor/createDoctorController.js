@@ -43,5 +43,9 @@
               url: "/lightning/o/Doctor__c/list?filterName=Recent"
            });
         urlEvent.fire();
+    },
+    
+    handleOnError : function(c, e, h) {
+
     }
 })

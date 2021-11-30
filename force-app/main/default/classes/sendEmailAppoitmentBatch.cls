@@ -20,7 +20,7 @@ public class sendEmailAppoitmentBatch implements Database.Batchable<SObject> , D
     
     public void execute(Database.BatchableContext bc, List<Appointment__c> records) {           
         for(Appointment__c app : records) {
-            if((app.Date__c == Date.today()) && app.Status__c == null){ 
+            if((app.Date__c == Date.today()) && app.Status__c == ''){ 
                 //update status to cancelled if appoitment date equals today
                 app.Status__c = 'cancelled';
             }
@@ -67,7 +67,7 @@ public class sendEmailAppoitmentBatch implements Database.Batchable<SObject> , D
             htmlBody = htmlBody.replace('{!Appointment__c.Patient__c.Name}', app.Patient__r.Name);
             htmlBody = htmlBody.replace('{!Appointment__c.Time__c}', String.valueOf(app.Time__c));
             htmlBody = htmlBody.replace('{!Appointment__c.Date__c}', String.valueOf(app.Date__c));
-            htmlBody = htmlBody.replace('{!Appointment__c.Link}', urldomain +'/apex/createAppoitment?id='+app.id);
+            //htmlBody = htmlBody.replace('{!Appointment__c.Link}', urldomain +'r/Appointment__c/'+app.id);
             if(app.Status__c != null) {
                  htmlBody = htmlBody.replace('{!Appointment__c.Status__c}', app.Status__c);
             }else {

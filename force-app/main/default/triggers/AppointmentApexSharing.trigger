@@ -1,10 +1,12 @@
 trigger AppointmentApexSharing on Appointment__c (after insert, after update) {
-    
+        
     if(!AppointmentTriggerHandler.isFirstTime) {
         return ;
     }
     AppointmentTriggerHandler.isFirstTime = false;
-    
+    Profile profileName = [SELECT Name FROM Profile WHERE Id =: UserInfo.getProfileId() Limit 1];
+    Boolean hasPermission = FeatureManagement.checkPermission('is_Hospital_Admin');
+
         if(trigger.isUpdate && trigger.isAfter) {
            for(Appointment__c item : trigger.new) {
                  Appointment__c oldApp = Trigger.oldMap.get(item.id);
@@ -12,15 +14,13 @@ trigger AppointmentApexSharing on Appointment__c (after insert, after update) {
                     item.addError('Patient cannot be change');
                  }else if(oldApp.Doctor__c != item.Doctor__c ) {
                     item.addError('Doctor cannot be change');
-                 }else if(oldApp.Status__c == 'cancelled' || oldApp.Status__c == 'confirmed' ) {
+                 }else if(oldApp.Status__c != null && hasPermission == false)
                     item.addError('Status cannot be change');
                  }
-                }
-         }
+        }
+         
     
         if(trigger.isInsert) {
-            Profile profileName = [SELECT Name FROM Profile WHERE Id =: UserInfo.getProfileId() Limit 1];
-            Boolean hasPermission = FeatureManagement.checkPermission('is_Hospital_Admin');
             //List<Appointment__c> appList = new List<Appointment__c>();
             //appList = [SELECT Id,Patient__r.User__c, Doctor__r.User__c FROM Appointment__c WHERE Id IN: Trigger.new];
             Map<Id,Appointment__c> appMap = new Map<Id,Appointment__c>([SELECT Id,Patient__r.User__c, Doctor__r.User__c, Doctor__r.User__r.Email,Patient__r.User__r.Email FROM Appointment__c WHERE Id IN: Trigger.new]);

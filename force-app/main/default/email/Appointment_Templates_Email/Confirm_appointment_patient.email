@@ -8,4 +8,4 @@
 <p>Doctor:  {!Appointment__c.Doctor__c.Name}</p>
 <p>Patient:  {!Appointment__c.Patient__c.Name}</p>
 
-<p>Link: {!Appointment__c.Link}</p>
+<a href="{!Appointment__c.Link}">See the record click here</a>

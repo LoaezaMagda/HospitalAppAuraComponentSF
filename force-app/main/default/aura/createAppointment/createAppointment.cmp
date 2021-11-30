@@ -46,7 +46,7 @@
                             <lightning:inputField fieldName="Patient__c" value="{!v.user.Id}" disabled="{!v.patientDisabled}"/>
                             <lightning:inputField fieldName="Doctor__c" disabled="{!v.doctorDisabled}"/>
                        </aura:if>
-                       <aura:if isTrue="{!v.user.Name != null || v.user.Name != undefined}">
+                       <aura:if isTrue="{!and(v.profile.Name != 'Patients',v.profile.Name != 'Doctors') }">
                             <lightning:inputField fieldName="Doctor__c" aura:id="docId" />
                             <lightning:inputField fieldName="Patient__c" aura:id="patId"/>
                        </aura:if>

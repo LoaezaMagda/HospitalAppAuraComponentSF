@@ -14,4 +14,4 @@
 
 <p>Patient:  {!Appointment__c.Patient__c}</p>
 
-<a href="https://bgo-dev-ed--c.visualforce.com/apex/createAppoitment?id={!Appointment__c.Id}">Link</a>
+<a href="{!Appointment__c.Link}">See the record click here</a>

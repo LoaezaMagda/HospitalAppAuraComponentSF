@@ -45,6 +45,9 @@
         urlEvent.fire();
     },
     
+    handleOnError : function(c, e, h) {
+    }
+    
    /* handleOnChange : function(component, event, helper) {
         var user = component.get("v.userId");
         alert(user);
